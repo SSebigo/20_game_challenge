@@ -21,10 +21,12 @@ color = Color(0.172549, 0.243137, 0.313726, 1)
 
 [node name="Player1" parent="." instance=ExtResource("2_s1kmi")]
 position = Vector2(50, 360)
+speed = 500.0
 
 [node name="Player2" parent="." instance=ExtResource("2_s1kmi")]
 position = Vector2(1210, 360)
 side = 1
+speed = 500.0
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["walls"]]
 collision_layer = 2

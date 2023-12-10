@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfidv7e4raxlf"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_2f4da"]
+[ext_resource type="AudioStream" uid="uid://coaf7jlga1unq" path="res://assets/pong_paddle.wav" id="2_io6hu"]
+[ext_resource type="AudioStream" uid="uid://cii2w4xyaydkr" path="res://assets/pong_wall.wav" id="3_p58rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwo3q"]
+
+[node name="Ball" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_2f4da")
+acceleration = 25.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lwo3q")
+
+[node name="PaddleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_io6hu")
+
+[node name="WallSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p58rl")

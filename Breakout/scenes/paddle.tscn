@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3pnxgdny3fsl"]
+
+[ext_resource type="Script" path="res://scripts/paddle.gd" id="1_vl15v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6vbq"]
+size = Vector2(120, 20)
+
+[node name="Paddle" type="StaticBody2D" groups=["paddles"]]
+collision_mask = 10
+script = ExtResource("1_vl15v")
+speed = 500.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -20.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_c6vbq")

@@ -3,3 +3,7 @@
 ## Game 1: Pong
 
 ![Pong Gameplay](recordings/pong.gif)
+
+## Game 2: Breakout
+
+![Breakout Gameplay](recordings/breakout.gif)
