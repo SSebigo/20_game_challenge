@@ -1,2 +1,5 @@
-# 20_game_challenge
-List of all game I made for the 20 Game Challenge
+# 20 Game Challenge
+
+## Game 1: Pong
+
+![Pong Gameplay](recordings/pong.gif)
