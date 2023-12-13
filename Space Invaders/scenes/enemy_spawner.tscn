@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwx1450dr3j8g"]
+
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_6ecld"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_6ecld")
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

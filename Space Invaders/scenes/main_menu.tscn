@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://cict0mjlvb4et"]
+
+[ext_resource type="FontFile" uid="uid://k2oif2gdu5j" path="res://assets/fonts/PublicPixel-z84yD.ttf" id="1_1arvh"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_7rr58"]
+[ext_resource type="Texture2D" uid="uid://d2td7bstyc38t" path="res://assets/space_invaders_brown_enemy_icon.png" id="2_hp3lx"]
+[ext_resource type="Texture2D" uid="uid://c8a4c4isdts2l" path="res://assets/space_invaders_green_enemy_icon.png" id="3_w225d"]
+[ext_resource type="Texture2D" uid="uid://cbrardn1xupdh" path="res://assets/space_invaders_red_enemy_icon.png" id="4_dcc7p"]
+[ext_resource type="Texture2D" uid="uid://doryh87x5r67l" path="res://assets/space_invaders_yellow_enemy_icon.png" id="5_peyv8"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_7rr58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_1arvh")
+theme_override_font_sizes/font_size = 25
+text = "SPACE INVADERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxInvaders" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxInvaderBrown" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxInvaders"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InvaderBrownTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderBrown"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("2_hp3lx")
+
+[node name="InvaderBrownLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderBrown"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1arvh")
+text = " = 10 POINTS"
+
+[node name="HBoxInvaderGreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxInvaders"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InvaderGreenTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderGreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("3_w225d")
+
+[node name="InvaderGreenLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderGreen"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1arvh")
+text = " = 20 POINTS"
+
+[node name="HBoxInvaderRed" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxInvaders"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InvaderRedTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderRed"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("4_dcc7p")
+
+[node name="InvaderRedLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderRed"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1arvh")
+text = " = 30 POINTS"
+
+[node name="HBoxInvaderYellow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxInvaders"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InvaderYellowTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderYellow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("5_peyv8")
+
+[node name="InvaderYellowLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxInvaders/HBoxInvaderYellow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1arvh")
+text = " = 40 POINTS"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_1arvh")
+text = "PLAY SPACE INVADERS"
+
+[node name="InvadersTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="InvadersTimer" to="." method="_on_invaders_timer_timeout"]

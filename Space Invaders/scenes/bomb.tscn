@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqsx5b36uhxe4"]
+
+[ext_resource type="Texture2D" uid="uid://bbpkk8r4i0tgo" path="res://assets/space_invaders_enemy_bomb.png" id="1_6hdkl"]
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_j3e6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fajpy"]
+size = Vector2(4, 8)
+
+[node name="Bomb" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 13
+script = ExtResource("1_j3e6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6hdkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fajpy")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj5oqrejo8lj7"]
+
+[ext_resource type="FontFile" uid="uid://k2oif2gdu5j" path="res://assets/fonts/PublicPixel-z84yD.ttf" id="1_3xoey"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_p6eln"]
+[ext_resource type="Texture2D" uid="uid://dtjgd5yeyys20" path="res://assets/space_invaders_points.png" id="3_qmwet"]
+[ext_resource type="Texture2D" uid="uid://dc1q64tjmy71t" path="res://assets/space_invaders_lives.png" id="4_qf8oc"]
+
+[node name="game_over" type="CanvasLayer"]
+script = ExtResource("1_p6eln")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_3xoey")
+theme_override_font_sizes/font_size = 25
+text = "SPACE INVADERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_3xoey")
+theme_override_font_sizes/font_size = 20
+text = "GAME OVER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxPoints" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PointsTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxPoints"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("3_qmwet")
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxPoints"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3xoey")
+text = "POINTS"
+
+[node name="HBoxLives" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LivesTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxLives"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("4_qf8oc")
+
+[node name="LivesLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxLives"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3xoey")
+text = "LIVES"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_3xoey")
+text = "CONTINUE"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

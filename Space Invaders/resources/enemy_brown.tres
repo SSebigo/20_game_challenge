@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyConfiguration" load_steps=3 format=3 uid="uid://1euj8m6yfbne"]
+
+[ext_resource type="Script" path="res://scripts/enemy_configuration.gd" id="1_xy247"]
+[ext_resource type="Texture2D" uid="uid://sxjrimoemp0d" path="res://assets/space_invaders_brown_enemy.png" id="2_g7ios"]
+
+[resource]
+script = ExtResource("1_xy247")
+sprite = ExtResource("2_g7ios")
+frames = 2
+points = 10
+animation = "move_brown"

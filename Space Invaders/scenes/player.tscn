@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf5q4rns8aqgs"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_niofq"]
+[ext_resource type="Texture2D" uid="uid://dyqt62761qx7h" path="res://assets/space_invaders_player.png" id="1_s6cs8"]
+[ext_resource type="AudioStream" uid="uid://cw7h1rih7rbry" path="res://assets/sfx/space_invaders_laser.wav" id="3_xbpbm"]
+[ext_resource type="AudioStream" uid="uid://oqul5n47okj8" path="res://assets/sfx/space_invaders_player_explosion.wav" id="4_s68dc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rvh"]
+size = Vector2(8, 5)
+
+[node name="Player" type="Area2D"]
+scale = Vector2(3, 3)
+collision_mask = 26
+script = ExtResource("1_niofq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s6cs8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_17rvh")
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="LaserSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xbpbm")
+
+[node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s68dc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

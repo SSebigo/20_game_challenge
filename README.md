@@ -7,3 +7,7 @@
 ## Game 2: Breakout
 
 ![Breakout Gameplay](recordings/breakout.gif)
+
+## Game 3: Space Invaders
+
+![Space Invaders Gameplay](recordings/space_invaders.gif)
