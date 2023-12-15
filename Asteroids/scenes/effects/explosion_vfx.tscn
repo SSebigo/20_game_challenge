@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2lt0lmg667gh"]
+
+[ext_resource type="Texture2D" uid="uid://b3b1bub4tji27" path="res://assets/asteroid_bullet.png" id="1_0sfy1"]
+[ext_resource type="Script" path="res://scripts/effects/explosion_vfx.gd" id="2_gdqx5"]
+
+[sub_resource type="Gradient" id="Gradient_jmwqa"]
+offsets = PackedFloat32Array(0, 0.735294, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.99558, 0.99558, 0.99558, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1ogg6"]
+gradient = SubResource("Gradient_jmwqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ts1ks"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 0.75
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 25.0
+color_ramp = SubResource("GradientTexture1D_1ogg6")
+
+[node name="ExplosionVFX" type="GPUParticles2D"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ts1ks")
+texture = ExtResource("1_0sfy1")
+one_shot = true
+explosiveness = 0.95
+script = ExtResource("2_gdqx5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

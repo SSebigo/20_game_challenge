@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AsteroidConfiguration" load_steps=3 format=3 uid="uid://ca3xy6fcxw6rt"]
+
+[ext_resource type="Script" path="res://scripts/asteroid_configuration.gd" id="1_lk7j0"]
+[ext_resource type="Texture2D" uid="uid://dq7mpiji6uvql" path="res://assets/asteroids_small.png" id="2_74jfr"]
+
+[resource]
+script = ExtResource("1_lk7j0")
+sprite = ExtResource("2_74jfr")
+type = 2
+points = 100
