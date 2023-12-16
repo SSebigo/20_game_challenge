@@ -15,6 +15,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	lives_label.text = "LIVES: " + str(PlayerData.lives)
 	points_label.text = "POINTS: " + str(PlayerData.points)
+	
+	if PlayerData.lives == 0:
+		get_tree().change_scene_to_file("res://scenes/game_over_menu.tscn")
 
 
 func _on_player_bullet_shot(player_position: Vector2, player_rotation: Vector2) -> void:

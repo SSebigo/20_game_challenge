@@ -46,3 +46,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Bullet:
 		destroyed.emit(configuration.type, position, configuration.points)
 		queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		PlayerData.lives -= 1

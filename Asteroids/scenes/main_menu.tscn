@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dac2ajk8sgp6x"]
+
+[ext_resource type="PackedScene" uid="uid://bwtxs76738mu6" path="res://scenes/asteroid_spawner.tscn" id="1_cduro"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wkveu"]
+[ext_resource type="FontFile" uid="uid://cg40vle635afd" path="res://assets/fonts/PublicPixel-z84yD.ttf" id="2_p1k3g"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_wkveu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AsteroidSpawner" parent="." instance=ExtResource("1_cduro")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p1k3g")
+theme_override_font_sizes/font_size = 50
+text = "ASTEROIDS"
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p1k3g")
+text = "PLAY ASTEROIDS"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
