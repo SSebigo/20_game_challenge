@@ -11,3 +11,7 @@
 ## Game 3: Space Invaders
 
 ![Space Invaders Gameplay](recordings/space_invaders.gif)
+
+## Game 4: Asteroids
+
+![Asteroids Gameplay](recordings/asteroids.gif)
